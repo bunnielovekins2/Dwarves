@@ -1,6 +1,6 @@
 ﻿using CocosSharp;
 
-namespace Dwarves
+namespace Dwarves.Windows.Layers
 {
 	public class ExampleLayer : CCLayerColor
 	{

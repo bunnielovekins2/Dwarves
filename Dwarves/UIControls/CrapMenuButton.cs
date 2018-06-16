@@ -1,15 +1,15 @@
 ﻿using CocosSharp;
 using Dwarves.Core.Helpers;
+using System;
 
-namespace Dwarves
+namespace Dwarves.Windows.UIControls
 {
-	public class CrapMenuButton : CCNode
+	public class CrapMenuButton : CCNode, DrawableNode
 	{
 		private readonly CCColor3B colour;
 		private readonly string label;
 		private CCLabel labelNode;
-		private CCDrawNode drawNode;
-		private bool clicked;
+		public bool ButtonActive;
 		private CCEventListenerMouse _eventListener;
 		private int height;
 		private int width;
@@ -19,6 +19,7 @@ namespace Dwarves
 		{
 			this.colour = colour;
 			this.label = label;
+			ClickEventListener = new CCEventListenerMouse();
 		}
 
 		public void Init(CCPoint point, CCDrawNode drawNode)
@@ -36,25 +37,22 @@ namespace Dwarves
 				Position = point
 			};
 
-			AddChild(labelNode);
+			AddChild(labelNode, 3);
 			ClickEventListener.OnMouseUp = (ccevent) =>
 			{
-				if (!rectangle.IsClickOnMe(ccevent)) return; // IsClickOnMe won't work for rectangle
-				clicked = true;
-				drawNode.Clear();
-				foreach (var child in drawNode.Children)
+				if (!rectangle.IsClickOnMe(ccevent)) return;
+				ButtonActive = true;
+				if (OnClick != null)
 				{
-					if (child is CrapMenuButton menuButton)
-					{
-						menuButton.Draw(drawNode);
-					}
+					OnClick.Invoke(ccevent);
 				}
+				drawNode.RedrawMe();
 			};
 		}
 
 		public void Draw(CCDrawNode drawNode)
 		{
-			if (clicked)
+			if (ButtonActive)
 			{
 				drawNode.DrawRect(rectangle, colour.To4B(), 1, CCColor4B.White);
 			}
@@ -63,18 +61,11 @@ namespace Dwarves
 				drawNode.DrawRect(rectangle, colour.To4B());
 			}
 		}
-
-
-
+		
 		public CCEventListenerMouse ClickEventListener
 		{
 			get
 			{
-				if (_eventListener == null)
-				{
-					_eventListener = new CCEventListenerMouse();
-					AddEventListener(_eventListener);
-				}
 				return _eventListener;
 			}
 			set
@@ -83,5 +74,7 @@ namespace Dwarves
 				AddEventListener(value);
 			}
 		}
+
+		public Action<CCEventMouse> OnClick;
 	}
 }

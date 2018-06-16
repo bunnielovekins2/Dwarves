@@ -6,7 +6,7 @@ namespace Dwarves.Core.Helpers
 	{
 		public static bool IsClickOnMe(this CCNode node, CCEventMouse ev)
 		{
-			return node.BoundingBoxTransformedToWorld.ContainsPoint(new CCPoint(ev.CursorX, ev.CursorY));
+			return node.BoundingBoxTransformedToWorld.ContainsPoint(new CCPoint(ev.CursorX, node.VisibleBoundsWorldspace.MaxY - ev.CursorY));
 		}
 
 		public static bool IsClickOnMe(this CCRect rect, CCEventMouse ev)

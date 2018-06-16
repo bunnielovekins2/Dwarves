@@ -1,6 +1,4 @@
-﻿using CocosSharp;
-
-namespace Dwarves.Core
+﻿namespace Dwarves.Core
 {
 	public class Game
 	{

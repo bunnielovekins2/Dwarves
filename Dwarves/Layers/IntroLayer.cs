@@ -1,7 +1,7 @@
 using CocosSharp;
 using Dwarves.Core.Helpers;
 
-namespace Dwarves.Windows
+namespace Dwarves.Windows.Layers
 {
 	public class IntroLayer : CCLayerColor
 	{

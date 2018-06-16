@@ -8,8 +8,8 @@
     <ProjectGuid>{C2AA92EF-1C66-4100-B17B-613EA7CB7BCC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Dwarves</RootNamespace>
-    <AssemblyName>Dwarves</AssemblyName>
+    <RootNamespace>Dwarves.Windows</RootNamespace>
+    <AssemblyName>Dwarves.Windows</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
@@ -40,20 +40,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="CrapMenuButton.cs" />
-    <Compile Include="ExampleLayer.cs" />
-    <Compile Include="EmbarkLayer.cs" />
-    <Compile Include="IntroLayer.cs" />
+    <Compile Include="UIControls\AnnouncementArea.cs" />
+    <Compile Include="UIControls\ClickableNode.cs" />
+    <Compile Include="UIControls\UIPosition.cs" />
+    <Compile Include="UIControls\CrapMenuButton.cs" />
+    <Compile Include="UIControls\DrawableNode.cs" />
+    <Compile Include="Layers\ExampleLayer.cs" />
+    <Compile Include="Layers\EmbarkLayer.cs" />
+    <Compile Include="Layers\GameLayer.cs" />
+    <Compile Include="Layers\IntroLayer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIControls\UIButton.cs" />
+    <Compile Include="WinHelpers.cs" />
+    <Compile Include="UIControls\YesNoControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\hd\animations\" />
     <Folder Include="Content\hd\fonts\" />
     <Folder Include="Content\hd\images\" />
-    <Folder Include="Content\ld\animations\" />
-    <Folder Include="Content\ld\fonts\" />
-    <Folder Include="Content\ld\images\" />
     <Folder Include="Content\sounds\" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +111,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\UI\announcementleft.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\UI\announcementmiddle.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\UI\announcementright.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\UI\dig.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\UI\start.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Game.ico" />
   </ItemGroup>
   <ItemGroup>
